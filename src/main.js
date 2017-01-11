@@ -1,8 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-
-import Slick from 'vue-slick';
+import buttonCounter from './components/button'
 // 注册
 
 
@@ -15,29 +14,15 @@ import Slick from 'vue-slick';
 // })
   window.vm=new Vue({
   el: '#app',
-  components: { Slick },
-
-    data() {
-        return {
-            slickOptions: {
-              infinite: true
-
-                // Any other options that can be got from plugin documentation
-            },
-        };
-    },
-
-    // All slick methods can be used too, example here
-    methods: {
-        next() {
-            this.$refs.slick.next();
-        },
-
-        prev() {
-            this.$refs.slick.prev();
-        },
-    },
-
+  components: {'button-counter': buttonCounter},
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function () {
+      this.total += 1
+    }
+  }
 
 })
 
