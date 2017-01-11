@@ -11,16 +11,17 @@
 <script src="../js/vue.js"></script>
 <!-- built files will be auto injected -->
 <script>
-  var Child = {
-    template: '<div>A custom component!</div>'
-  }
-  new Vue({
-    // ...
-    el:'#demo',
-    components: {
-      // <my-component> 将只在父模板可用
-      'my-component': Child
+  // 注册
+  Vue.component('my-component', {
+    template: '<span>{{ message }}</span>',
+
+    data: {
+      message: 'hello'
     }
+  });
+  // 创建根实例
+  new Vue({
+    el: '#demo'
   })
 </script>
 </body>

@@ -6,20 +6,22 @@
 </head>
 <body>
 <div id="demo">
-  <my-component></my-component>
+  <table>
+    <my-row></my-row>
+  </table>
 </div>
 <script src="../js/vue.js"></script>
 <!-- built files will be auto injected -->
 <script>
   var Child = {
-    template: '<div>A custom component!</div>'
+    template: '<tr><td>我是测试的内容</td></tr>'
   }
   new Vue({
     // ...
     el:'#demo',
     components: {
       // <my-component> 将只在父模板可用
-      'my-component': Child
+      'my-row': Child
     }
   })
 </script>
