@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent-prop改变后的事例事例</title>
+</head>
+<body>
+<div id="demo">
+  <child message="hello!"></child>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var Child = {
+    template: '<span>{{ message }}</span>',
+    props: ['message']
+  };
+
+  // 创建根实例
+  new Vue({
+    el: '#demo',
+    components: {
+      // <my-component> 将只在父模板可用
+      'child': Child
+    }
+  })
+</script>
+</body>
+</html>

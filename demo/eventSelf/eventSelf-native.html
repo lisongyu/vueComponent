@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent-原生事件</title>
+</head>
+<body>
+<div id="demo">
+  <div id="counter-event-example">
+    <p>{{ total }}</p>
+    <button-counter v-on:click.native="incrementTotal"></button-counter>
+    <button-counter v-on:click.native="incrementTotal"></button-counter>
+    <button @click="incrementTotal">按钮</button>
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var buttonCounter = {
+//    点击事件触发increment
+    template: '<button v-on:click="increment">{{ counter }}</button>',
+    data: function () {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      increment: function () {
+        //自身+1 然后触发父级的自定义事件increment
+        this.counter += 1;
+//        this.$emit('incrementTotal')
+      }
+    },
+  }
+  new Vue({
+    // ...
+    el:'#demo',
+    components: {
+      // <my-component> 将只在父模板可用
+      buttonCounter
+    },
+    data: {
+      total: 0
+    },
+    methods: {
+      incrementTotal: function () {
+        this.total += 1
+      }
+    }
+  })
+</script>
+</body>
+</html>

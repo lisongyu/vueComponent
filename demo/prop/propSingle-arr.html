@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent-prop动态组件</title>
+</head>
+<body>
+<div id="demo">
+  <div>
+
+    <!--此时将parentMsg传输给my-message 子组件就可以通过prop传输数据了-->
+   <span>我是父级</span> <span v-text="parentMsg"></span>
+    <span>我是子集</span><child  :my-message="parentMsg"></child>
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var Child = {
+    template: '<span @click="add">{{counter}}</span>',
+    props: ['myMessage'],
+//    将传过来的值赋给counter
+    data(){
+
+      return {counter:this.myMessage}
+    },
+    methods:{
+      add(){
+        this.counter.push(4);
+      }
+    }
+  };
+
+  // 创建根实例
+  new Vue({
+    el: '#demo',
+    components: {
+      // <my-component> 将只在父模板可用
+      'child': Child
+    },
+    data(){
+      return {parentMsg:['1','2','3']}
+    }
+
+  })
+</script>
+</body>
+</html>

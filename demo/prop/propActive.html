@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent-prop动态组件</title>
+</head>
+<body>
+<div id="demo">
+  <div>
+    <input v-model="parentMsg">
+    <br>
+    <!--此时将parentMsg传输给my-message 子组件就可以通过prop传输数据了-->
+    <child  :my-message="parentMsg"></child>
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var Child = {
+    template: '<span>{{myMessage}}</span>',
+    props: ['myMessage']
+  };
+
+  // 创建根实例
+  new Vue({
+    el: '#demo',
+    components: {
+      // <my-component> 将只在父模板可用
+      'child': Child
+    },
+    data(){
+      return {parentMsg:'hello你好'}
+    }
+
+  })
+</script>
+</body>
+</html>
