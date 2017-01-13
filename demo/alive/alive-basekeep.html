@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent</title>
+  <style>
+    .active{
+      color: green;
+    }
+
+  </style>
+</head>
+<body>
+<div id="example">
+  <ul>
+    <li v-for="item in allView" v-text="item" :class="{ active: currentView==item }" @click="changeContent(item)"></li>
+
+  </ul>
+  <keep-alive>
+    <component :is="currentView" >
+      <!-- 组件在 vm.currentview 变化时改变！ -->
+    </component>
+  </keep-alive>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var home = {
+    template: '<p>Welcome home!</p>'
+  };
+  var posts = {
+    template: '<p>Welcome posts!</p>'
+  };
+  var archive = {
+    template: '<p>Welcome archive!</p>'
+  };
+  var vm = new Vue({
+    el: '#example',
+    data: {
+      currentView:'home',
+      allView:['home','posts','archive']
+
+
+    },
+    components: {
+      home,
+      posts,
+      archive
+    },
+    methods:{
+      changeContent:function(text){
+        this.currentView=text;
+
+      }
+    }
+
+
+  })
+</script>
+</body>
+</html>
