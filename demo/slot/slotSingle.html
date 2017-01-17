@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent</title>
+</head>
+<body>
+<div id="demo">
+  <div>
+    <h1>我是父组件的标题</h1>
+    <my-component>
+      <p>这是一些初始内容</p>
+      <p>这是更多的初始内容</p>
+    </my-component>
+  </div>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  //在子元素中定义分发内容
+  var Child = {
+    template: '<div><h2>我是子组件的标题</h2><slot>只有在没有要分发的内容时才会显示</slot></div>',
+    data:function(){
+      return {message:'我是子组件中的内容'}
+    }
+  };
+  new Vue({
+    // ...
+    el:'#demo',
+    components: {
+      // <my-component> 将只在父模板可用
+      'my-component': Child
+    },
+    data:function(){
+      return {message:'我是父组件中的内容'}
+    }
+
+  })
+</script>
+</body>
+</html>
