@@ -26,13 +26,29 @@
 <!-- built files will be auto injected -->
 <script>
   var home = {
-    template: '<p>Welcome home!</p>'
+    template: '<div><p>Welcome {{text}}!</p><input v-model="text"></div>',
+    data:function(){
+      return{
+        text:'home'
+      }
+    }
   };
   var posts = {
-    template: '<p>Welcome posts!</p>'
+    template: '<div><p>Welcome {{text}}!</p><input v-model="text"></div>',
+    data:function(){
+      return{
+        text:'posts'
+      }
+    }
   };
   var archive = {
-    template: '<p>Welcome archive!</p>'
+    template: '<div><p>Welcome {{text}}!</p><input v-model="text"></div>',
+    data:function(){
+      return{
+        text:'archive'
+      }
+    }
+
   };
   var vm = new Vue({
     el: '#example',
