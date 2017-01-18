@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent</title>
+</head>
+<body>
+<div id="demo">
+  <my-awesome-list :items="items">
+    <!-- 作用域插槽也可以在这里命名 -->
+    <template slot="item" scope="props">
+      <li class="my-fancy-item">{{ props.text }}</li>
+    </template>
+  </my-awesome-list>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var Child={
+    template:'<ul><slot name="item" v-for="item in items" :text="item.text"> <!-- 这里是备用内容 --> </slot></ul>',
+    props:['items']
+  };
+
+  new Vue({
+    // ...
+    el:'#demo',
+    data:function(){
+
+      return {
+        items: [
+          {text: '1111111111'},
+          {text: '2222222222'},
+          {text: '3333333333'},
+          {text: '4444444444'}
+
+
+        ]
+      }
+
+
+
+    },
+
+    components: {
+      // <my-component> 将只在父模板可用
+      myAwesomeList:Child
+
+    }
+
+
+
+
+  })
+</script>
+</body>
+</html>
