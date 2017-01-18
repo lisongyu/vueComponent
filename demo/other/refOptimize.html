@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vuecomponent</title>
+  <style>
+    button{
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="parent">
+
+  <user-profile ref="profile"></user-profile>
+  <button @click="getContent">我要访问子元素的内容</button>
+</div>
+<script src="../js/vue.js"></script>
+<!-- built files will be auto injected -->
+<script>
+  var Child = {
+    template: '<div>{{text}}</div>',
+    data:function(){
+      return{
+        text:'我是子组件的内容'
+      }
+    }
+  };
+  var parent = new Vue({
+    el: '#parent',
+    components:{
+      userProfile:Child
+    },
+    methods:{
+      getContent:function(){
+        var child=this.$refs.profile;
+        alert(child.text);
+      }
+    }
+
+
+  });
+
+
+
+</script>
+</body>
+</html>
