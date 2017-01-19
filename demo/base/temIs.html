@@ -7,14 +7,15 @@
 <body>
 <div id="demo">
   <table>
-    <tr is="my-row"></tr>
+
+    <tbody is="my-row"></tbody>
   </table>
 </div>
 <script src="../js/vue.js"></script>
 <!-- built files will be auto injected -->
 <script>
   var Child = {
-    template: '<td>我是测试的内容</td>'
+    template: '<tr><td>我是测试的内容</td></tr>'
   }
   new Vue({
     // ...
