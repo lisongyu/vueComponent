@@ -12,7 +12,8 @@
 <!-- built files will be auto injected -->
 <script>
   // 注册
-  Vue.component('currency-input', {
+  Vue.component('currency-input',
+    {
     template: '<span>$<input ref="input" :value="value" @input="updateValue($event.target.value)"></span>',
     props: {
       value: {

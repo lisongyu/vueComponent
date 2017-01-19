@@ -12,7 +12,7 @@
 <body>
 <div id="example">
   <ul>
-    <li v-for="item in allView" v-text="item" @click="changeContent(item)"></li>
+    <li :class="isActive" v-for="item in allView" v-text="item" @click="changeContent(item)"></li>
 
   </ul>
   <component :is="currentView">
@@ -22,7 +22,7 @@
 <script src="../js/vue.js"></script>
 <!-- built files will be auto injected -->
 <script>
-  var Home = {
+  var home = {
     template: '<p>Welcome home!</p>'
   };
   var posts = {
@@ -34,11 +34,11 @@
   var vm = new Vue({
     el: '#example',
     data: {
-      currentView: Home,
-      allView:['Home','posts','archive']
+      currentView: home,
+      allView:['home','posts','archive']
     },
     components: {
-      home: Home,
+      home,
       posts,
       archive
     },

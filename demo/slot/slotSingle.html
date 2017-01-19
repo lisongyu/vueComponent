@@ -19,10 +19,8 @@
 <script>
   //在子元素中定义分发内容
   var Child = {
-    template: '<div><h2>我是子组件的标题</h2><slot>只有在没有要分发的内容时才会显示</slot></div>',
-    data:function(){
-      return {message:'我是子组件中的内容'}
-    }
+    template: '<div><h2>我是子组件的标题</h2><slot>只有在没有要分发的内容时才会显示</slot></div>'
+
   };
   new Vue({
     // ...
@@ -30,10 +28,8 @@
     components: {
       // <my-component> 将只在父模板可用
       'my-component': Child
-    },
-    data:function(){
-      return {message:'我是父组件中的内容'}
     }
+
 
   })
 </script>

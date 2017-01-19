@@ -28,7 +28,8 @@
       increment: function () {
         //自身+1 然后触发父级的自定义事件increment
         this.counter += 1;
-//        this.$emit('incrementTotal')
+        this.$emit('click');
+
       }
     },
   }
